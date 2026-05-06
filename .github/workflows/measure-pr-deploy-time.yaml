@@ -60,7 +60,7 @@ jobs:
 
       - name: Build traefik-k8s charm from PR source
         run: |
-          charmcraft pack --destructive-mode --format=json > charmcraft-pack.json
+          charmcraft pack --platform ubuntu@24.04:amd64 --destructive-mode --format=json > charmcraft-pack.json
           CHARM_FILE=$(python3 -c 'import json; print(json.load(open("charmcraft-pack.json"))["charms"][0])')
           CHARM_PATH=$(realpath "$CHARM_FILE")
           echo "Packed charm: $CHARM_PATH"
